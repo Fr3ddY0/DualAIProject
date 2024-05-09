@@ -1,0 +1,39 @@
+﻿
+@model DualAI.Models.RedirectViewModel
+
+@{
+    ViewData["Title"] = "Redirect";
+}
+
+<div class="container">
+    <h1 class="text-center my-2">Pagina Finale</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="GeneratedText" class="control-label"></label>
+                <input asp-for="GeneratedText" class="form-control" readonly />
+                <span asp-validation-for="GeneratedText" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="AudioUrl" class="control-label"></label>
+                <input asp-for="AudioUrl" class="form-control" readonly />
+                <span asp-validation-for="AudioUrl" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-center my-4">
+        <a asp-action="Redirect" class="btn btn-primary">Aggiorna</a>
+    </div>
+    <div class="text-center my-4">
+        <a asp-controller="Mainpages" asp-action="Index" class="btn btn-info mt-2">Torna alla lista</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

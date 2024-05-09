@@ -1,0 +1,6 @@
+@DualAI_API_PlayHT_HostAddress = http://localhost:5022
+
+GET {{DualAI_API_PlayHT_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

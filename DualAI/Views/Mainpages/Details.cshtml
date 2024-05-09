@@ -1,0 +1,36 @@
+﻿@model DualAI.Models.Mainpage
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Mainpage</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prompt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prompt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LinguaOriginale)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LinguaOriginale)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LinguaDiTraduzione)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LinguaDiTraduzione)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Nickname">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

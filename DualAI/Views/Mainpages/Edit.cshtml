@@ -1,0 +1,60 @@
+﻿@model DualAI.Models.Mainpage
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    var linguaOriginaleSalvata = Model.LinguaOriginale; 
+    var linguaDiTraduzioneSalvata = Model.LinguaDiTraduzione;
+}
+
+<div class="container">
+    <h1 class="text-center my-4">Modifica</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Nickname" />
+                <div class="form-group">
+                    <label asp-for="Prompt" class="control-label"></label>
+                    <input asp-for="Prompt" class="form-control" />
+                    <span asp-validation-for="Prompt" class="text-danger"></span>
+                </div>
+                <!-- Lingua Originale -->
+                <div class="form-group">
+                    <label asp-for="LinguaOriginale" class="control-label"></label>
+                    <select asp-for="LinguaOriginale" class="form-control">
+                        <option selected>@linguaOriginaleSalvata</option>
+                        <option value="Italiano">Italiano</option>
+                        <option value="Inglese">Inglese</option>
+                    </select>
+                </div>
+
+                <!-- Lingua Di Traduzione -->
+                <div class="form-group">
+                    <label asp-for="LinguaDiTraduzione" class="control-label"></label>
+                    <select asp-for="LinguaDiTraduzione" class="form-control">
+                        <option selected>@linguaDiTraduzioneSalvata</option>
+                        <option value="Italiano">Italiano</option>
+                        <option value="Inglese">Inglese</option>
+                        <option value="Tedesco">Tedesco</option>
+                        <option value="Francese">Francese</option>
+                    </select>
+                </div>
+                <br />
+                <div class="form-group text-center">
+                    <input type="submit" value="Salva" class="btn btn-primary" /> |
+                    <a asp-action="Index" class="btn btn-secondary">Torna alla lista</a><br />
+                    <a asp-controller="RedirectViewModels" asp-action="Redirect" class="btn btn-info mt-2">Vai alla pagina di reindirizzamento</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
