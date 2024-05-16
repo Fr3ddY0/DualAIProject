@@ -10,7 +10,6 @@ using DualAI.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using System.Net.Http.Headers;
-using static System.Net.Mime.MediaTypeNames;
 using Newtonsoft.Json.Linq;
 
 namespace DualAI.Controllers
@@ -30,7 +29,6 @@ namespace DualAI.Controllers
         {
             return View(await _context.Mainpage.ToListAsync());
         }
-
 
         public async Task<IActionResult> Push(string id)
         {
@@ -77,9 +75,6 @@ namespace DualAI.Controllers
             }
             return View(mainpage); // Passa il modello alla vista
         }
-
-
-
 
 
         // GET: Mainpages/Create
@@ -194,9 +189,5 @@ namespace DualAI.Controllers
         {
             return _context.Mainpage.Any(e => e.Nickname == id);
         }
-
-
-
-
     }
 }

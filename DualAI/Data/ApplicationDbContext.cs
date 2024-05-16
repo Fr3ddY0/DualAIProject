@@ -11,5 +11,6 @@ namespace DualAI.Data
         {
         }
         public DbSet<DualAI.Models.Mainpage> Mainpage { get; set; } = default!;
+        public DbSet<DualAI.Models.RedirectViewModel> RedirectViewModel { get; set; } = default!;
     }
 }
