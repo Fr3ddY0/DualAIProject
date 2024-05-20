@@ -2,23 +2,58 @@
     ViewData["Title"] = "Chi Siamo";
 }
 
-<div class="container">
-    <h1 class="text-left my-4">Chi Siamo</h1>
-    <p class="text-left my-2">
-        Siamo una piccola azienda composta da un team di professionisti appassionati. Ci impegniamo a fornire i migliori servizi ai nostri clienti.
-    </p>
-    <hr />
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #d3d3d3; /* Grigio chiaro */
+            font-family: Arial, sans-serif;
+        }
 
-    <div class="row my-4">
-        <div class="col-md-6 text-center">
-            <img src="~/IMG/Massimo.jpeg" class="img-fluid rounded-circle mb-3" alt="Foto del membro del team" style="width: 400px; height: auto;" />
-            <h2>Massimo</h2>
-            <p>Developer</p>
-        </div>
-        <div class="col-md-6 text-center">
-            <img src="~/IMG/Lorenzo.jpeg" class="img-fluid rounded-circle mb-3" alt="Foto del membro del team" style="width: 400px; height: auto;" />
-            <h2>Lorenzo</h2>
-            <p>Mediatore Creditizio</p>
+        .container {
+            background-color: ghostwhite; /* Bianco per il contenitore per contrasto */
+            padding: 20px;
+            border-radius: 10px; /* Bordo arrotondato per migliorare l'aspetto */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra per il contenitore */
+            margin-top: 30px; /* Margine superiore per distanziare il contenitore dal bordo della pagina */
+        }
+
+        .text-center img {
+            width: 100%;
+            max-width: 400px; /* Larghezza massima delle immagini */
+            height: auto;
+        }
+
+        h1, h2 {
+            color: darkseagreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-left my-4">Chi Siamo</h1>
+        <p class="text-left my-2">
+            Siamo una piccola azienda composta da un team di professionisti appassionati. Ci impegniamo a fornire i migliori servizi ai nostri clienti.
+        </p>
+        <hr />
+
+        <div class="row my-4">
+            <div class="col-md-6 text-center">
+                <img src="~/IMG/Massimo.jpeg" class="img-fluid rounded-circle mb-3" alt="Foto del membro del team" />
+                <h2>Massimo</h2>
+                <p>Developer</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="~/IMG/Lorenzo.jpeg" class="img-fluid rounded-circle mb-3" alt="Foto del membro del team" />
+                <h2>Lorenzo</h2>
+                <p>Mediatore Creditizio</p>
+            </div>
         </div>
     </div>
-</div>
+</body>
+</html>

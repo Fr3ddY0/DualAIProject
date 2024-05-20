@@ -4,10 +4,62 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    body {
+        background-color: lightgrey;
+        font-family: Arial, sans-serif;
+    }
+
+    .btn-blue, .btn-yellow, .btn-red, .btn-green {
+        border-radius: 20px; /* Bordo arrotondato */
+        padding: 6px 15px; /* Spaziatura interna */
+        font-size: 12px; /* Dimensione del testo */
+        font-weight: bold; /* Grassetto */
+        transition: all 0.3s ease; /* Effetto di transizione */
+    }
+
+    .btn-blue {
+        background-color: #4ea8de; /* Blu */
+        border-color: #4ea8de;
+        color: white;
+    }
+
+    .btn-yellow {
+        background-color: #f6d365; /* Giallo */
+        border-color: #f6d365;
+        color: black;
+    }
+
+    .btn-red {
+        background-color: #f35d6a; /* Rosso */
+        border-color: #f35d6a;
+        color: white;
+    }
+
+    .btn-green {
+        background-color: #77dd77; /* Verde */
+        border-color: #77dd77;
+        color: black;
+    }
+
+        .btn-blue:hover, .btn-yellow:hover, .btn-red:hover, .btn-green:hover {
+            transform: translateY(-2px); /* Effetto di sollevamento */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra */
+        }
+
+    .container {
+        background-color: ghostwhite; /* Bianco per il contenitore per contrasto */
+        padding: 20px;
+        border-radius: 10px; /* Bordo arrotondato per migliorare l'aspetto */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra per il contenitore */
+        margin-top: 30px; /* Margine superiore per distanziare il contenitore dal bordo della pagina */
+    }
+</style>
+
 <div class="container">
-    <h1 class="text-center my-4">Lista Prompt</h1>
-    <div class="text-center my-2">
-        <a asp-action="Create" class="btn btn-primary btn-sm">Crea Nuovo</a>
+    <h1 class="text-center mb-4">Lista Prompt</h1>
+    <div class="text-center mb-3">
+        <a asp-action="Create" class="btn btn-info btn-lg btn-green">Crea Nuovo</a>
     </div>
     <table class="table table-hover">
         <thead class="thead-light">
@@ -26,9 +78,9 @@
                         @Html.DisplayFor(modelItem => item.Prompt)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Nickname" class="btn btn-info btn-sm">Modifica</a> |
-                        <a asp-action="Push" asp-route-id="@item.Nickname" class="btn btn-info btn-sm">Chiamata</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Nickname" class="btn btn-danger btn-sm">Elimina</a>
+                        <a asp-action="Edit" asp-route-id="@item.Nickname" class="btn btn-info btn-sm btn-blue">Modifica</a>
+                        <a asp-action="Push" asp-route-id="@item.Nickname" class="btn btn-info btn-sm btn-yellow ml-2">Chiamata</a>
+                        <a asp-action="Delete" asp-route-id="@item.Nickname" class="btn btn-danger btn-sm btn-red ml-2">Elimina</a>
                     </td>
                 </tr>
             }

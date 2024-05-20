@@ -12,6 +12,7 @@ using System.Text;
 using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 
+
 namespace DualAI.Controllers
 {
     [Authorize]
@@ -30,6 +31,7 @@ namespace DualAI.Controllers
             return View(await _context.Mainpage.ToListAsync());
         }
 
+        // Metodo rifatto richiesto dal prof
         public async Task<IActionResult> Push(string id)
         {
             var mainpage = await _context.Mainpage.FindAsync(id);
@@ -73,6 +75,46 @@ namespace DualAI.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
+
+            // Esegui la seconda chiamata API
+            var secondClient = new HttpClient();
+            var secondRequest = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri("https://api.play.ht/api/v2/tts/stream"),
+                Headers =
+        {
+            { "accept", "application/json" },
+            { "AUTHORIZATION", "df888c2ce26e469faec722f7e8426a5d" },
+            { "X-USER-ID", "x6dI5kAeNUMoS39JrFCld5H4VQP2" },
+        },
+                Content = new StringContent("{\"text\":\"" + mainpage.GeneratedText + "\",\"voice\":\"s3://voice-cloning-zero-shot/d9ff78ba-d016-47f6-b0ef-dd630f59414e/female-cs/manifest.json\",\"output_format\":\"mp3\",\"quality\":\"medium\"}")
+                {
+                    Headers =
+            {
+                ContentType = new MediaTypeHeaderValue("application/json")
+            }
+                }
+            };
+
+            using (var secondResponse = await secondClient.SendAsync(secondRequest))
+            {
+                secondResponse.EnsureSuccessStatusCode();
+                var body = await secondResponse.Content.ReadAsStringAsync();
+
+                // Deserializza la risposta JSON per estrarre il campo "href"
+                var secondJsonResponse = JObject.Parse(body);
+                var audioUrl = secondJsonResponse["href"]?.ToString();
+
+                if (audioUrl != null)
+                {
+                    // Salva l'URL dell'audio nel campo audiourl del mainpage
+                    mainpage.AudioUrl = audioUrl;
+                    _context.Update(mainpage);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
             return View(mainpage); // Passa il modello alla vista
         }
 
@@ -189,5 +231,7 @@ namespace DualAI.Controllers
         {
             return _context.Mainpage.Any(e => e.Nickname == id);
         }
+
+
     }
 }

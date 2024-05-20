@@ -3,11 +3,6 @@
 @{
     ViewData["Title"] = "Details";
 }
-<style>
-    .custom-background {
-        background-color: #f5f5dc; /* Beige molto chiaro */
-    }
-</style>
 
 <h1>Pagina Finale</h1>
 
@@ -25,7 +20,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="AudioUrl" class="control-label"></label>
-                <input asp-for="AudioUrl" class="form-control" readonly />
+                <a href="@Model.AudioUrl" class="form-control" style="padding-top: 6px; display: block;">@Model.AudioUrl</a>
                 <span asp-validation-for="AudioUrl" class="text-danger"></span>
             </div>
         </div>
